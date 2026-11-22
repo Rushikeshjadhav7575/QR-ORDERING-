@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartServe | Digital Menu</title>
+
+    <link rel="stylesheet" href="menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="menu-header">
+    <div class="brand">
+        <div class="brand-logo">S</div>
+        <div>
+            <h2>Smart<span>Serve</span></h2>
+            <small>RESTAURANT & CAFE</small>
+        </div>
+    </div>
+
+    <div class="table-badge">
+        <span>●</span>
+        <span id="tableNumber">Table 01</span>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- WELCOME -->
+    <section class="welcome">
+        <div>
+            <span class="welcome-tag">WELCOME TO SMARTSERVE</span>
+            <h1>Good food.<br>
+                <span>Good mood.</span>
+            </h1>
+            <p>Discover delicious food made fresh for you.</p>
+        </div>
+
+        <div class="welcome-emoji">🍽️</div>
+    </section>
+
+    <!-- SEARCH -->
+    <section class="search-section">
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="🔍  Search your favourite food..."
+        >
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories-section">
+        <div class="section-heading">
+            <h2>Explore Menu</h2>
+            <span>Choose your favourite</span>
+        </div>
+
+        <div class="category-list" id="categoryList">
+            <button class="category-btn active" data-category="All">All</button>
+            <button class="category-btn" data-category="Pizza">🍕 Pizza</button>
+            <button class="category-btn" data-category="Burger">🍔 Burger</button>
+            <button class="category-btn" data-category="Chinese">🍜 Chinese</button>
+            <button class="category-btn" data-category="Dessert">🍰 Dessert</button>
+            <button class="category-btn" data-category="Drinks">🥤 Drinks</button>
+        </div>
+    </section>
+
+    <!-- FOOD MENU -->
+    <section class="food-section">
+        <div class="section-heading">
+            <h2>Our Delicious Food</h2>
+            <span id="foodCount">Loading menu...</span>
+        </div>
+
+        <div class="food-grid" id="foodGrid">
+            <div class="loading-message">Preparing your menu...</div>
+        </div>
+    </section>
+
+</main>
+
+<!-- CART FLOATING BUTTON -->
+<button class="cart-floating-btn" id="openCart">
+    🛒 Your Cart
+    <span id="cartCount">0</span>
+</button>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<!-- CART DRAWER -->
+<aside class="cart-drawer" id="cartDrawer">
+
+    <div class="cart-header">
+        <div>
+            <h2>Your Cart 🛒</h2>
+            <p>Review your delicious choices</p>
+        </div>
+
+        <button id="closeCart" class="close-btn">✕</button>
+    </div>
+
+    <div id="cartItems" class="cart-items">
+        <p class="empty-cart">Your cart is empty!</p>
+    </div>
+
+    <div class="cart-footer">
+
+        <div class="bill-row">
+            <span>Subtotal</span>
+            <strong id="subtotal">₹0</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Tax (5%)</span>
+            <strong id="tax">₹0</strong>
+        </div>
+
+        <div class="bill-row total-row">
+            <span>Total Amount</span>
+            <strong id="total">₹0</strong>
+        </div>
+
+        <button class="checkout-btn" id="checkoutBtn">
+            Proceed to Checkout →
+        </button>
+
+        <p class="cart-note">Your food will be prepared fresh ❤️</p>
+
+    </div>
+
+</aside>
+
+<div id="toast" class="toast"></div>
+
+<script type="module" src="menu.js"></script>
+
+</body>
+</html>
