@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Restaurant | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">S</div>
+            <div>
+                <h2>Smart<span>Serve</span></h2>
+                <small>RESTAURANT SYSTEM</small>
+            </div>
+        </div>
+
+        <div class="menu-label">MAIN MENU</div>
+
+        <nav class="navigation">
+            <a href="#" class="nav-link active" data-page="Overview">
+                <span>▦</span> Overview
+            </a>
+            <a href="#" class="nav-link" data-page="Orders">
+                <span>🛍</span> Orders
+                <b class="nav-count">5</b>
+            </a>
+            <a href="#" class="nav-link" data-page="Menu Management">
+                <span>☷</span> Menu Management
+            </a>
+            <a href="#" class="nav-link" data-page="Tables">
+                <span>▤</span> Tables
+            </a>
+            <a href="#" class="nav-link" data-page="Kitchen">
+                <span>♨</span> Kitchen
+            </a>
+            <a href="#" class="nav-link" data-page="Customers">
+                <span>♙</span> Customers
+            </a>
+            <a href="#" class="nav-link" data-page="Staff">
+                <span>♧</span> Staff
+            </a>
+        </nav>
+
+        <div class="menu-label second-label">MANAGEMENT</div>
+
+        <nav class="navigation">
+            <a href="#" class="nav-link" data-page="Analytics">
+                <span>▥</span> Analytics
+            </a>
+            <a href="#" class="nav-link" data-page="Settings">
+                <span>⚙</span> Settings
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <div class="help-icon">✦</div>
+                <h3>Need help?</h3>
+                <p>Manage your restaurant with ease.</p>
+                <button id="helpBtn">Get Support</button>
+            </div>
+
+            <div class="profile">
+                <div class="avatar">A</div>
+                <div class="profile-info">
+                    <strong>Admin User</strong>
+                    <small>Restaurant Owner</small>
+                </div>
+                <span>•••</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="top-left">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <div>
+                    <h1 id="pageTitle">Dashboard Overview</h1>
+                    <p>Welcome back! Here's what's happening today.</p>
+                </div>
+            </div>
+
+            <div class="top-actions">
+                <div class="connection-status" id="connectionStatus">
+                    <span></span> Checking Firebase
+                </div>
+                <button class="notification-btn" id="notificationBtn">♧</button>
+                <div class="top-avatar">A</div>
+            </div>
+        </header>
+
+        <!-- DATE -->
+        <div class="date-row">
+            <div>
+                <span class="live-dot"></span>
+                <span>Restaurant is open</span>
+            </div>
+            <div id="currentDate"></div>
+        </div>
+
+        <!-- STATS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Total Orders</span>
+                    <div class="stat-icon orange">▤</div>
+                </div>
+                <h2>248</h2>
+                <p><span class="positive">↑ 12.5%</span> vs last week</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Total Revenue</span>
+                    <div class="stat-icon green">₹</div>
+                </div>
+                <h2>₹45,280</h2>
+                <p><span class="positive">↑ 8.2%</span> vs last week</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Active Tables</span>
+                    <div class="stat-icon purple">▦</div>
+                </div>
+                <h2>12 <small>/ 20</small></h2>
+                <p>60% occupancy</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Pending Orders</span>
+                    <div class="stat-icon blue">◷</div>
+                </div>
+                <h2>08</h2>
+                <p><span class="warning">Needs attention</span></p>
+            </div>
+
+        </section>
+
+        <!-- CONTENT GRID -->
+        <section class="dashboard-grid">
+
+            <!-- RECENT ORDERS -->
+            <div class="panel orders-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Recent Orders</h2>
+                        <p>Manage your latest customer orders</p>
+                    </div>
+                    <button class="view-btn" id="viewOrders">View All →</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ORDER ID</th>
+                                <th>CUSTOMER</th>
+                                <th>TABLE</th>
+                                <th>AMOUNT</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersList">
+                            <tr>
+                                <td>#ORD1024</td>
+                                <td>Rahul Sharma</td>
+                                <td>Table 04</td>
+                                <td>₹850</td>
+                                <td><span class="status preparing">Preparing</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD1023</td>
+                                <td>Priya Patel</td>
+                                <td>Table 08</td>
+                                <td>₹540</td>
+                                <td><span class="status served">Served</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD1022</td>
+                                <td>Amit Kumar</td>
+                                <td>Table 02</td>
+                                <td>₹1,250</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD1021</td>
+                                <td>Neha Singh</td>
+                                <td>Table 06</td>
+                                <td>₹720</td>
+                                <td><span class="status served">Served</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD1020</td>
+                                <td>Arjun Verma</td>
+                                <td>Table 03</td>
+                                <td>₹430</td>
+                                <td><span class="status preparing">Preparing</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- POPULAR ITEMS -->
+            <div class="panel popular-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Popular Items</h2>
+                        <p>Best-selling food items</p>
+                    </div>
+                    <span class="fire">🔥</span>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-emoji">🍕</div>
+                    <div class="food-details">
+                        <strong>Margherita Pizza</strong>
+                        <small>Italian • 86 orders</small>
+                    </div>
+                    <b>₹299</b>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-emoji">🍔</div>
+                    <div class="food-details">
+                        <strong>Cheese Burger</strong>
+                        <small>Fast Food • 72 orders</small>
+                    </div>
+                    <b>₹199</b>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-emoji">🍜</div>
+                    <div class="food-details">
+                        <strong>Veg Noodles</strong>
+                        <small>Chinese • 64 orders</small>
+                    </div>
+                    <b>₹180</b>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-emoji">🍰</div>
+                    <div class="food-details">
+                        <strong>Chocolate Cake</strong>
+                        <small>Dessert • 48 orders</small>
+                    </div>
+                    <b>₹150</b>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- TABLE OVERVIEW -->
+        <section class="panel table-panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Restaurant Tables</h2>
+                    <p>Monitor table occupancy</p>
+                </div>
+                <button class="view-btn" id="viewTables">Manage Tables →</button>
+            </div>
+
+            <div class="table-grid">
+                <div class="restaurant-table occupied">
+                    <span>🍽</span><strong>01</strong><small>Occupied</small>
+                </div>
+                <div class="restaurant-table occupied">
+                    <span>🍽</span><strong>02</strong><small>Occupied</small>
+                </div>
+                <div class="restaurant-table available">
+                    <span>🍽</span><strong>03</strong><small>Available</small>
+                </div>
+                <div class="restaurant-table occupied">
+                    <span>🍽</span><strong>04</strong><small>Occupied</small>
+                </div>
+                <div class="restaurant-table available">
+                    <span>🍽</span><strong>05</strong><small>Available</small>
+                </div>
+                <div class="restaurant-table occupied">
+                    <span>🍽</span><strong>06</strong><small>Occupied</small>
+                </div>
+                <div class="restaurant-table available">
+                    <span>🍽</span><strong>07</strong><small>Available</small>
+                </div>
+                <div class="restaurant-table occupied">
+                    <span>🍽</span><strong>08</strong><small>Occupied</small>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 SmartServe Restaurant Management System</p>
+            <p>Made with <span>♥</span> for better restaurant management</p>
+        </footer>
+
+    </main>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+                                  </html>
+                                  
